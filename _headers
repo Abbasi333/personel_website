@@ -1,0 +1,54 @@
+# ====================================================================
+# NETLIFY CDN HEADERS — Fastest of the Fastest Cache Strategy
+# ====================================================================
+
+# HTML — always revalidate (never stale)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Root HTML
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+
+# CSS — cache 1 year (versioned by filename)
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# JavaScript — cache 1 year
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# Admin JS/CSS
+/admin/css/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+/admin/js/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# Images — cache 1 year
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# Service Worker — never cache (must always be fresh)
+/sw.js
+  Cache-Control: no-store, max-age=0
+
+# Fonts served locally
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Sitemap and robots — short cache
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+/robots.txt
+  Cache-Control: public, max-age=86400

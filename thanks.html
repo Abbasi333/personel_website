@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBAIDDEV | Project Inquiry Received</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        .thanks-box {
+            padding: 3.5rem 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="thanks-box glass" data-aos="zoom-in">
+        <i class="fas fa-check-circle" style="font-size: 4.5rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+        <h1 class="section-title" style="font-size: 2.4rem; margin-bottom: 1rem;">Project Inquiry Received!</h1>
+        <p id="thanks-msg" style="color: var(--text-dim); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.7;">
+            Thank you for choosing <strong>UBAIDDEV</strong>. Your project requirements and milestone details have been successfully secured. I will review your specification and connect with you via WhatsApp & Email within 2 to 4 hours with an actionable roadmap.
+        </p>
+        <div id="order-summary-box" style="display: none; background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 12px; padding: 1.2rem; margin-bottom: 2rem; text-align: left; font-size: 0.9rem;">
+            <p style="margin-bottom: 4px; color: #fff;"><strong>Client:</strong> <span id="summary-name" style="color: var(--primary);"></span></p>
+            <p style="margin-bottom: 4px; color: #fff;"><strong>Service:</strong> <span id="summary-service"></span></p>
+            <p style="margin-bottom: 4px; color: #fff;"><strong>Status:</strong> <span style="color: #00e676; font-weight: 700;">Secured in Database (Pending Review)</span></p>
+        </div>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="index.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Return to Portfolio</a>
+            <a id="thanks-wa-btn" href="https://wa.me/923248505782" target="_blank" class="btn btn-secondary" style="background: #25d366; color: #fff; border-color: #25d366;"><i class="fab fa-whatsapp"></i> Instant WhatsApp Chat</a>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        try {
+            const raw = sessionStorage.getItem('ubaiddev_last_order');
+            if (raw) {
+                const order = JSON.parse(raw);
+                if (order && order.name) {
+                    document.getElementById('thanks-msg').innerHTML = `
+                        Thank you, <strong style="color:#fff;">${order.name}</strong>! Your inquiry for <strong style="color:var(--primary);">${order.service || 'your project'}</strong> has been successfully received and logged into our database. Ubaid Abbasi will review your details and reach out within 2 to 4 hours.
+                    `;
+                    document.getElementById('summary-name').textContent = order.name;
+                    document.getElementById('summary-service').textContent = order.service || 'Custom Solution';
+                    document.getElementById('order-summary-box').style.display = 'block';
+
+                    const text = encodeURIComponent(`Hello Ubaid, I just submitted an inquiry on your portfolio for: ${order.service || 'a project'}. My name is ${order.name}. Looking forward to discussing details!`);
+                    document.getElementById('thanks-wa-btn').href = `https://wa.me/923248505782?text=${text}`;
+                }
+            }
+        } catch(e) {}
+    </script>
+</body>
+</html>

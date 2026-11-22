@@ -1,0 +1,11 @@
+{
+  "name": "ubaiddev-portfolio",
+  "version": "1.0.0",
+  "description": "UBAIDDEV Official Portfolio & Serverless Email Dispatcher",
+  "scripts": {
+    "start": "echo 'Static portfolio ready'"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}

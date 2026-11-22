@@ -1,0 +1,5 @@
+﻿User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://ubaiddeve.netlify.app/sitemap.xml

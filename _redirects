@@ -1,0 +1,11 @@
+# Static routes
+/google9ce6963cd9fdaeb3.html    /google9ce6963cd9fdaeb3.html    200
+/thanks.html    /thanks.html    200
+/sw.js          /sw.js          200
+/sitemap.xml    /sitemap.xml    200
+/robots.txt     /robots.txt     200
+/admin/*        /admin/:splat   200
+/admin          /admin/admin.html 200
+
+# Fallback for deep links
+/*              /index.html     200
